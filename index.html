@@ -1,0 +1,769 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Naday Tech &mdash; Creating the world you need</title>
+<meta name="description" content="Naday Tech builds software for the world worth living in. The technology arm of the Naday Global Group &mdash; AI-embedded products across heritage, learning, care, and community." />
+<meta name="theme-color" content="#F5F1EA" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+<!-- Lenis smooth-scroll (the single biggest premium-feel upgrade) -->
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+
+<style>
+  /* =====================================================================
+     1. DESIGN TOKENS
+     Cream + Ink + Electric Purple. Defined once, reused everywhere.
+     ===================================================================== */
+  :root{
+    --cream:#F5F1EA;
+    --cream-2:#EFEAE0;
+    --ink:#0A0A0A;
+    --ink-soft:#1f1f1f;
+    --muted:#6b6862;
+    --purple:#5B3FE6;
+    --purple-soft:#7B5CE6;
+    --rule:rgba(10,10,10,.12);
+    --max:1280px;
+    --ease-out:cubic-bezier(.2,.7,.2,1);
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  html{scroll-behavior:auto} /* Lenis handles smoothness, native disabled */
+  body{
+    background:var(--cream);color:var(--ink);
+    font-family:'Instrument Sans',system-ui,sans-serif;
+    font-size:16px;line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--purple);color:#fff}
+
+  /* =====================================================================
+     2. GRAIN TEXTURE OVERLAY
+     One inline SVG of fractal noise, pinned to the viewport, low opacity.
+     The single most effective "feels expensive" upgrade in the file.
+     ===================================================================== */
+  /* grain overlay removed — cleaner, more professional SaaS look */
+
+  /* =====================================================================
+     3. SCROLL PROGRESS BAR
+     A 2px purple line at the very top edge, width tracks page scroll.
+     ===================================================================== */
+  #progress{
+    position:fixed;top:0;left:0;height:2px;width:0;
+    background:linear-gradient(90deg,var(--purple),#c084fc,var(--purple));
+    z-index:60;transition:width .1s linear;
+  }
+
+  /* =====================================================================
+     4. CUSTOM CURSOR (DESKTOP ONLY)
+     Two layers: a small dot that tracks the mouse precisely, and a larger
+     ring that follows with a slight delay. Both scale when over links.
+     Disabled on touch devices via media query in the JS section.
+     ===================================================================== */
+  @media (hover:hover) and (pointer:fine){
+    body{cursor:none}
+    a,button,.cta,.ghost,.pillar,.op{cursor:none}
+    #cursor-dot,#cursor-ring{
+      position:fixed;top:0;left:0;pointer-events:none;z-index:50;
+      transform:translate(-50%,-50%);
+      will-change:transform;
+    }
+    #cursor-dot{
+      width:6px;height:6px;border-radius:50%;background:var(--ink);
+      transition:transform .15s var(--ease-out), background .25s ease;
+    }
+    #cursor-ring{
+      width:36px;height:36px;border-radius:50%;
+      border:1px solid var(--ink);opacity:.4;
+      transition:width .3s var(--ease-out), height .3s var(--ease-out),
+                 border-color .25s ease, opacity .25s ease;
+    }
+    body.hovering-link #cursor-dot{transform:translate(-50%,-50%) scale(0);background:var(--purple)}
+    body.hovering-link #cursor-ring{
+      width:56px;height:56px;border-color:var(--purple);opacity:.6;
+    }
+  }
+  @media (hover:none){#cursor-dot,#cursor-ring{display:none}}
+
+  /* =====================================================================
+     5. LAYOUT FOUNDATIONS
+     ===================================================================== */
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 32px;position:relative;z-index:2}
+  @media (max-width:680px){.wrap{padding:0 20px}}
+
+  /* =====================================================================
+     6. NAV
+     ===================================================================== */
+  header{
+    position:sticky;top:0;z-index:20;
+    background:rgba(245,241,234,.82);
+    backdrop-filter:blur(14px) saturate(1.1);
+    -webkit-backdrop-filter:blur(14px) saturate(1.1);
+    border-bottom:1px solid var(--rule);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+  .brand{
+    display:flex;align-items:center;gap:10px;
+    font-family:'Anton',sans-serif;
+    font-size:22px;letter-spacing:.04em;text-transform:uppercase;
+  }
+  .brand .dot{
+    width:12px;height:12px;border-radius:50%;
+    background:var(--purple);
+    box-shadow:0 0 0 2px var(--cream), 0 0 12px rgba(91,63,230,.4);
+  }
+  nav ul{
+    display:flex;gap:32px;list-style:none;margin:0;padding:0;
+    font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;
+  }
+  nav ul a{position:relative;padding:6px 0}
+  nav ul a::after{
+    content:"";position:absolute;left:0;right:0;bottom:0;height:1px;
+    background:var(--purple);transform:scaleX(0);transform-origin:left;
+    transition:transform .35s var(--ease-out);
+  }
+  nav ul a:hover::after{transform:scaleX(1)}
+  @media (max-width:780px){nav ul{display:none}}
+
+  /* =====================================================================
+     7. HERO
+     ===================================================================== */
+  .hero{position:relative;padding:80px 0 100px;overflow:hidden}
+
+  /* Subtle radial halo behind the orb */
+  .hero::before{
+    content:"";position:absolute;top:10%;right:-10%;
+    width:60%;height:80%;
+    background:radial-gradient(circle at center, rgba(91,63,230,.08), transparent 60%);
+    pointer-events:none;z-index:0;
+  }
+
+  .hero-grid{
+    display:grid;grid-template-columns:1.1fr .9fr;
+    gap:48px;align-items:center;position:relative;z-index:1;
+  }
+  @media (max-width:980px){.hero-grid{grid-template-columns:1fr;gap:24px}}
+
+  .kicker{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--muted);font-weight:500;margin-bottom:24px;
+  }
+  .kicker::before{content:"";width:24px;height:1px;background:var(--ink)}
+
+  h1.display{
+    font-family:'Anton',sans-serif;
+    font-size:clamp(64px, 11vw, 168px);
+    line-height:.88;letter-spacing:-.01em;text-transform:uppercase;
+    margin:0 0 32px;font-weight:400;
+  }
+
+  /* Animated iridescent text gradient on the accent line */
+  h1.display .accent{
+    background:linear-gradient(90deg,#5B3FE6,#8b6ff0,#5B3FE6);
+    background-size:300% 100%;
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:transparent;
+    animation:iridesce 8s linear infinite;
+  }
+  @keyframes iridesce{
+    0%{background-position:0% 50%}
+    100%{background-position:300% 50%}
+  }
+
+  .lede{
+    font-size:clamp(17px,1.4vw,20px);line-height:1.5;
+    max-width:48ch;color:var(--ink-soft);margin:0 0 36px;
+  }
+
+  .cta-row{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+  .cta{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--ink);color:var(--cream);
+    padding:16px 24px;border-radius:999px;
+    font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;
+    transition:background .25s ease;
+    position:relative;will-change:transform;
+  }
+  .cta:hover{background:var(--purple)}
+  .cta svg{width:14px;height:14px;transition:transform .25s ease}
+  .cta:hover svg{transform:translate(2px,-2px)}
+  .ghost{
+    font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;
+    border-bottom:1px solid var(--ink);padding-bottom:2px;
+  }
+
+  /* =====================================================================
+     8. IRIDESCENT ORB (with mouse-parallax wrapper)
+     The orb element itself spins; the parallax wrapper translates with mouse.
+     ===================================================================== */
+  .orb-stage{
+    position:relative;width:100%;aspect-ratio:1/1;max-width:520px;margin-left:auto;
+    display:flex;align-items:center;justify-content:center;
+    will-change:transform;transition:transform .4s var(--ease-out);
+  }
+  .orb{
+    position:absolute;inset:8%;border-radius:50%;
+    background:
+      radial-gradient(circle at 32% 28%, rgba(255,255,255,.9), transparent 42%),
+      radial-gradient(circle at 50% 55%, #7c66f0 0%, #5B3FE6 46%, #2f1f6e 100%);
+    box-shadow:
+      inset -26px -26px 70px rgba(20,10,60,.5),
+      inset 24px 24px 64px rgba(255,255,255,.16),
+      0 30px 80px rgba(91,63,230,.22);
+  }
+  .orb::before{
+    content:"";position:absolute;inset:0;border-radius:50%;
+    background:radial-gradient(circle at 70% 75%, rgba(0,0,0,.35), transparent 45%);
+    mix-blend-mode:multiply;
+  }
+  .orb::after{
+    content:"";position:absolute;left:18%;top:14%;width:30%;height:18%;
+    border-radius:50%;
+    background:radial-gradient(ellipse at center, rgba(255,255,255,.9), transparent 70%);
+    filter:blur(4px);
+  }
+  .orb-ring{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(10,10,10,.15)}
+  .orb-ring.r2{inset:-8%;border-style:dashed;animation:spin 60s linear infinite reverse;opacity:.5}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  /* =====================================================================
+     9. PRINCIPLES STRIP (hero anchor)
+     ===================================================================== */
+  .principles-strip{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+    margin-top:64px;padding-top:32px;border-top:1px solid var(--rule);
+  }
+  .ps .num{
+    font-family:'Anton',sans-serif;font-size:clamp(40px,5vw,64px);
+    line-height:1;color:var(--purple);
+  }
+  .ps .lab{font-size:13px;color:var(--ink);margin-top:10px;font-weight:500}
+  @media (max-width:680px){.principles-strip{grid-template-columns:1fr;gap:18px}}
+
+  /* =====================================================================
+     10. MARQUEE RIBBON
+     Brand soundbites scrolling horizontally between sections.
+     Pure CSS animation. Content duplicated for seamless loop.
+     ===================================================================== */
+  .marquee{
+    position:relative;padding:24px 0;
+    background:var(--ink);color:var(--cream);
+    overflow:hidden;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
+  }
+  .marquee-track{
+    display:flex;gap:64px;width:max-content;
+    animation:marquee 40s linear infinite;
+  }
+  .marquee-item{
+    display:inline-flex;align-items:center;gap:24px;flex-shrink:0;
+    font-family:'Anton',sans-serif;font-size:32px;
+    letter-spacing:.04em;text-transform:uppercase;
+  }
+  .marquee-item .dot{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--purple);
+    flex-shrink:0;
+  }
+  @keyframes marquee{
+    from{transform:translateX(0)}
+    to{transform:translateX(calc(-50% - 32px))}
+  }
+  .marquee:hover .marquee-track{animation-play-state:paused}
+
+  /* =====================================================================
+     11. SECTION BASE + VERTICAL GUTTER LABELS
+     Small editorial flourish: rotated section number in the left margin.
+     ===================================================================== */
+  section.block{padding:120px 0;border-top:1px solid var(--rule);position:relative}
+  .gutter-label{
+    position:absolute;top:120px;left:8px;
+    font-family:'Anton',sans-serif;font-size:13px;letter-spacing:.2em;
+    color:var(--muted);transform:rotate(-90deg);transform-origin:left top;
+    white-space:nowrap;writing-mode:horizontal-tb;
+  }
+  @media (max-width:1100px){.gutter-label{display:none}}
+  .section-label{
+    font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--muted);margin-bottom:24px;display:flex;align-items:center;gap:12px;
+  }
+  .section-label::before{content:"[";color:var(--purple);font-family:'Anton',sans-serif}
+  .section-label::after{content:"]";color:var(--purple);font-family:'Anton',sans-serif;margin-left:6px}
+  h2.h2{
+    font-family:'Anton',sans-serif;
+    font-size:clamp(40px,6vw,88px);
+    line-height:.95;letter-spacing:-.01em;text-transform:uppercase;
+    margin:0 0 48px;font-weight:400;max-width:14ch;
+  }
+
+  /* Two-col body */
+  .two-col{display:grid;grid-template-columns:1fr 1.4fr;gap:80px;align-items:start}
+  @media (max-width:980px){.two-col{grid-template-columns:1fr;gap:24px}}
+  .two-col .body p{
+    font-size:18px;line-height:1.6;max-width:60ch;margin:0 0 20px;color:var(--ink-soft);
+  }
+  .two-col .body p:first-child{font-size:21px;color:var(--ink);font-weight:500;line-height:1.5}
+  .two-col .body p strong{color:var(--ink);font-weight:600}
+
+  /* =====================================================================
+     12. PILLARS (with 3D tilt on hover)
+     ===================================================================== */
+  .pillars{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--rule)}
+  .pillar{
+    background:var(--cream);padding:48px 36px;position:relative;
+    transition:background .35s ease, transform .15s var(--ease-out);
+    transform-style:preserve-3d;will-change:transform;
+  }
+  .pillar:hover{background:var(--cream-2)}
+  .pillar .idx{
+    font-family:'Anton',sans-serif;font-size:18px;color:var(--purple);
+    letter-spacing:.06em;margin-bottom:32px;
+  }
+  .pillar h3{
+    font-family:'Anton',sans-serif;font-size:36px;line-height:1;
+    text-transform:uppercase;letter-spacing:.01em;margin:0 0 16px;font-weight:400;
+  }
+  .pillar p{margin:0;color:var(--ink-soft);max-width:42ch;line-height:1.55}
+  @media (max-width:780px){.pillars{grid-template-columns:1fr}}
+
+  /* How we work */
+  .ops{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--rule)}
+  .op{background:var(--cream);padding:40px 36px;transition:background .35s ease}
+  .op:hover{background:var(--cream-2)}
+  .op .num{
+    font-family:'Anton',sans-serif;font-size:18px;color:var(--purple);
+    letter-spacing:.04em;margin-bottom:18px;
+  }
+  .op h3{
+    font-family:'Anton',sans-serif;font-size:28px;line-height:1.05;
+    text-transform:uppercase;letter-spacing:.01em;margin:0 0 12px;font-weight:400;
+  }
+  .op p{margin:0;color:var(--ink-soft);max-width:48ch;line-height:1.55}
+  @media (max-width:780px){.ops{grid-template-columns:1fr}}
+
+  /* Contact card */
+  .contact-card{
+    background:var(--ink);color:var(--cream);
+    padding:clamp(40px,6vw,72px);border-radius:24px;
+    position:relative;overflow:hidden;
+  }
+  .contact-card::before{
+    content:"";position:absolute;top:-20%;right:-10%;
+    width:380px;height:380px;border-radius:50%;
+    background:radial-gradient(circle at 50% 50%,#5B3FE6,transparent 70%);
+    filter:blur(70px);opacity:.4;
+    animation:spin 30s linear infinite;
+  }
+  .contact-card > *{position:relative;z-index:1}
+  .contact-card h2{
+    font-family:'Anton',sans-serif;font-size:clamp(40px,5.5vw,72px);
+    line-height:.95;text-transform:uppercase;letter-spacing:-.005em;
+    margin:0 0 32px;font-weight:400;max-width:16ch;
+  }
+  .contact-card p{font-size:18px;line-height:1.55;color:rgba(245,241,234,.85);margin:0;max-width:48ch}
+  .contact-rows{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:32px;
+    margin-top:48px;padding-top:32px;border-top:1px solid rgba(245,241,234,.15);
+  }
+  .contact-rows .label{
+    font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+    color:rgba(245,241,234,.55);margin-bottom:8px;
+  }
+  .contact-rows .val{font-size:16px;line-height:1.4}
+  .contact-rows .val a{border-bottom:1px solid rgba(245,241,234,.35);padding-bottom:1px}
+  .contact-rows .val a:hover{border-color:var(--cream)}
+  @media (max-width:780px){.contact-rows{grid-template-columns:1fr;gap:20px}}
+
+  /* Footer */
+  footer{padding:48px 0 56px;border-top:1px solid var(--rule);margin-top:120px}
+  .foot{
+    display:flex;justify-content:space-between;align-items:center;
+    flex-wrap:wrap;gap:16px;font-size:13px;color:var(--muted);
+  }
+  .foot a{color:var(--muted)}
+  .foot a:hover{color:var(--ink)}
+  .foot-links{display:flex;gap:24px;flex-wrap:wrap}
+
+  /* =====================================================================
+     13. SCROLL-TRIGGERED REVEALS (IntersectionObserver-driven)
+     Elements start invisible/offset. The JS observer adds .in-view when
+     they enter the viewport, triggering a stagger.
+     ===================================================================== */
+  .reveal{
+    opacity:0;transform:translateY(28px);
+    transition:opacity .9s var(--ease-out), transform .9s var(--ease-out);
+    transition-delay:var(--rd,0s);
+  }
+  .reveal.in-view{opacity:1;transform:none}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    .marquee-track,.orb,.brand .dot,.contact-card::before,.accent{animation:none !important}
+  }
+</style>
+</head>
+<body>
+
+<!-- Scroll progress indicator -->
+<div id="progress" aria-hidden="true"></div>
+
+<!-- Custom cursor (hidden on touch via CSS) -->
+<div id="cursor-ring" aria-hidden="true"></div>
+<div id="cursor-dot" aria-hidden="true"></div>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="brand"><span class="dot" aria-hidden="true"></span>Naday Tech</a>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="#philosophy">Philosophy</a></li>
+        <li><a href="#what">What we build</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="kicker reveal">A Naday Global Group company</div>
+        <h1 class="display reveal" style="--rd:.12s">Creating<br/>the world<br/><span class="accent">you need.</span></h1>
+        <p class="lede reveal" style="--rd:.24s">
+          We build software for the world worth living in. Naday Tech is the technology arm of the
+          Naday Global Group &mdash; AI-embedded products for the things that hold lives together.
+          Family. Heritage. Language. Care. Learning.
+        </p>
+        <div class="cta-row reveal" style="--rd:.36s">
+          <a href="#contact" class="cta magnetic">
+            <span>Work with us</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg>
+          </a>
+          <a href="#what" class="ghost">See what we build</a>
+        </div>
+      </div>
+      <div class="orb-stage reveal" id="orb" style="--rd:.2s" aria-hidden="true">
+        <div class="orb-ring r2"></div>
+        <div class="orb-ring"></div>
+        <div class="orb"></div>
+      </div>
+    </div>
+
+    <div class="principles-strip">
+      <div class="ps reveal" style="--rd:.5s"><div class="num">01</div><div class="lab">The world we need.</div></div>
+      <div class="ps reveal" style="--rd:.6s"><div class="num">02</div><div class="lab">Software that serves it.</div></div>
+      <div class="ps reveal" style="--rd:.7s"><div class="num">03</div><div class="lab">Work that lasts.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE RIBBON -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item"><span class="dot"></span>Creating the world you need</span>
+    <span class="marquee-item"><span class="dot"></span>Software for the world worth living in</span>
+    <span class="marquee-item"><span class="dot"></span>AI in the right hands</span>
+    <span class="marquee-item"><span class="dot"></span>Care &middot; Roots &middot; Lingua &middot; Build</span>
+    <span class="marquee-item"><span class="dot"></span>A Naday Global Group company</span>
+    <!-- duplicate for seamless loop -->
+    <span class="marquee-item"><span class="dot"></span>Creating the world you need</span>
+    <span class="marquee-item"><span class="dot"></span>Software for the world worth living in</span>
+    <span class="marquee-item"><span class="dot"></span>AI in the right hands</span>
+    <span class="marquee-item"><span class="dot"></span>Care &middot; Roots &middot; Lingua &middot; Build</span>
+    <span class="marquee-item"><span class="dot"></span>A Naday Global Group company</span>
+  </div>
+</div>
+
+<!-- PHILOSOPHY -->
+<section class="block" id="philosophy">
+  <div class="gutter-label">01 &mdash; Philosophy</div>
+  <div class="wrap">
+    <div class="two-col">
+      <div>
+        <div class="section-label reveal">Philosophy</div>
+        <h2 class="h2 reveal" style="--rd:.1s">A world worth living in.</h2>
+      </div>
+      <div class="body">
+        <p class="reveal" style="--rd:.2s">Software is not neutral. Every product shapes some small part of the world we are going to live in next.</p>
+        <p class="reveal" style="--rd:.3s">We build for the world we want that to be. Families connected across distance and generations. Lineage preserved before it is lost. Elders resting in the knowledge that everything they carried &mdash; their stories, their records, their names &mdash; has been entrusted forward. Children who learn in the language and in the way that fits them. Institutions that care for people, given tools equal to the work.</p>
+        <p class="reveal" style="--rd:.4s">That is the thread that holds Naday Tech together. Not a sector. A direction.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE BUILD -->
+<section class="block" id="what">
+  <div class="gutter-label">02 &mdash; What we build</div>
+  <div class="wrap">
+    <div class="section-label reveal">What we build</div>
+    <h2 class="h2 reveal" style="--rd:.1s">Tools for the world we need.</h2>
+
+    <div class="pillars">
+      <article class="pillar tilt reveal" style="--rd:.1s">
+        <div class="idx">01 &mdash; Care</div>
+        <h3>Social care platforms</h3>
+        <p>SaaS for social services, community welfare, and the institutions that hold up vulnerable lives. Built to lift administrative weight off frontline teams so the work itself can be done.</p>
+      </article>
+      <article class="pillar tilt reveal" style="--rd:.2s">
+        <div class="idx">02 &mdash; Roots</div>
+        <h3>Heritage &amp; lineage</h3>
+        <p>Lineage preserved. Stories carried forward. Apps that help families across distance and generations entrust the treasure of who they are &mdash; their roots, their records, their language &mdash; to the people who come next.</p>
+      </article>
+      <article class="pillar tilt reveal" style="--rd:.3s">
+        <div class="idx">03 &mdash; Lingua</div>
+        <h3>Language &amp; learning</h3>
+        <p>Languages kept alive. Learners met where they are. Adaptive tools for classrooms, communities, and consumers &mdash; built around how people actually learn, not how curriculums assume they do.</p>
+      </article>
+      <article class="pillar tilt reveal" style="--rd:.4s">
+        <div class="idx">04 &mdash; Build</div>
+        <h3>AI integrations</h3>
+        <p>AI placed in the right hands. Custom intelligence layers embedded into the systems run by partner companies, institutions, and government bodies. We ship the engine; you keep your stack.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- HOW WE WORK -->
+<section class="block" id="how">
+  <div class="gutter-label">03 &mdash; How we work</div>
+  <div class="wrap">
+    <div class="section-label reveal">How we work</div>
+    <h2 class="h2 reveal" style="--rd:.1s">A few things we hold to.</h2>
+
+    <div class="ops">
+      <div class="op reveal" style="--rd:.1s">
+        <div class="num">01</div>
+        <h3>Mission before stack.</h3>
+        <p>We start with the people the software serves &mdash; the family, the learner, the social worker, the elder. Technology choices follow from there, not the other way around.</p>
+      </div>
+      <div class="op reveal" style="--rd:.2s">
+        <div class="num">02</div>
+        <h3>AI in the right hands.</h3>
+        <p>AI is embedded where it earns its place, and only on terms our users understand. We use providers and configurations that, to the best of our knowledge, do not train on our customers' data.</p>
+      </div>
+      <div class="op reveal" style="--rd:.3s">
+        <div class="num">03</div>
+        <h3>Ship, don't slideware.</h3>
+        <p>We are a software company, not a consultancy. Our deliverable is working product in the hands of real users &mdash; not a deck about what we could build.</p>
+      </div>
+      <div class="op reveal" style="--rd:.4s">
+        <div class="num">04</div>
+        <h3>Patience over polish.</h3>
+        <p>The work we are interested in plays out across years, not quarters. We build to last and to revisit, not to launch and abandon.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="block" id="about">
+  <div class="gutter-label">04 &mdash; About</div>
+  <div class="wrap">
+    <div class="two-col">
+      <div>
+        <div class="section-label reveal">About</div>
+        <h2 class="h2 reveal" style="--rd:.1s">Why we build.</h2>
+      </div>
+      <div class="body">
+        <p class="reveal" style="--rd:.2s"><strong>Naday Tech</strong> is the technology trading name of the Naday Global Group. Across the group, our work touches heritage, learning, care, and community &mdash; sectors that look unrelated from the outside but share a single concern.</p>
+        <p class="reveal" style="--rd:.3s">The thread is this: technology that creates the conditions for the lives people actually want to live. Families connected across distance. Lineage preserved before it is lost. Elders resting in the knowledge that everything they carried has been entrusted forward. Children who learn in languages and in ways that fit them. Institutions that care for people, given tools equal to the work.</p>
+        <p class="reveal" style="--rd:.4s">We don't build software to make more software. We build it to help shape the world that we and our partners need to live in.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="block" id="contact">
+  <div class="gutter-label">05 &mdash; Contact</div>
+  <div class="wrap">
+    <div class="contact-card reveal">
+      <div class="section-label" style="color:rgba(245,241,234,.55)">Get in touch</div>
+      <h2>Tell us what world you're building.</h2>
+      <p>
+        Whether you're a partner, an institution, or a founder with a problem worth solving &mdash; we'd like to hear from you.
+      </p>
+
+      <div class="contact-rows">
+        <div>
+          <div class="label">General</div>
+          <div class="val"><a href="mailto:hello@nadaytech.com">hello@nadaytech.com</a></div>
+        </div>
+        <div>
+          <div class="label">Partnerships</div>
+          <div class="val"><a href="mailto:partners@nadaytech.com">partners@nadaytech.com</a></div>
+        </div>
+        <div>
+          <div class="label">Group</div>
+          <div class="val">Naday Global Group<br/><span style="color:rgba(245,241,234,.55);font-size:13px">A trading name of the parent group</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>&copy; <span id="yr"></span> Naday Tech &mdash; a Naday Global Group company.</div>
+    <div class="foot-links">
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<!-- =========================================================================
+     INTERACTIVITY
+     Each block below is self-contained and tagged with a comment so you can
+     copy any of them into another project via Claude Code.
+     ========================================================================= -->
+<script>
+(() => {
+  // Footer year (tiny touch — always keep it current)
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // ---------- A. Lenis smooth scroll ----------
+  // Single biggest premium-feel upgrade. Disable native smooth, let Lenis run.
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let lenis;
+  if (!reduced && window.Lenis) {
+    lenis = new Lenis({ duration: 1.2, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+    const raf = (t) => { lenis.raf(t); requestAnimationFrame(raf); };
+    requestAnimationFrame(raf);
+    // Make in-page anchor links use Lenis
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href');
+        if (id.length > 1) {
+          const t = document.querySelector(id);
+          if (t) { e.preventDefault(); lenis.scrollTo(t, { offset: -20 }); }
+        }
+      });
+    });
+  }
+
+  // ---------- B. Scroll progress bar ----------
+  const progress = document.getElementById('progress');
+  const updateProgress = () => {
+    const h = document.documentElement;
+    const pct = (h.scrollTop || document.body.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    progress.style.width = Math.max(0, Math.min(100, pct)) + '%';
+  };
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+
+  // ---------- C. Custom cursor (desktop only) ----------
+  const fine = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+  if (fine && !reduced) {
+    const dot = document.getElementById('cursor-dot');
+    const ring = document.getElementById('cursor-ring');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+    const tick = () => {
+      // Dot tracks instantly; ring follows with damping
+      dot.style.transform = `translate(${mx}px,${my}px) translate(-50%,-50%)`;
+      rx += (mx - rx) * 0.18;
+      ry += (my - ry) * 0.18;
+      ring.style.transform = `translate(${rx}px,${ry}px) translate(-50%,-50%)`;
+      requestAnimationFrame(tick);
+    };
+    tick();
+    // Scale up over interactive elements
+    document.querySelectorAll('a, button, .cta, .pillar, .op').forEach(el => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('hovering-link'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('hovering-link'));
+    });
+  }
+
+  // ---------- D. Scroll-triggered reveals ----------
+  // Replace load-only stagger with IntersectionObserver — content reveals as the user reaches it.
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && !reduced) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(en => {
+        if (en.isIntersecting) {
+          en.target.classList.add('in-view');
+          io.unobserve(en.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -10% 0px' });
+    reveals.forEach(el => io.observe(el));
+  } else {
+    reveals.forEach(el => el.classList.add('in-view'));
+  }
+
+  // ---------- E. Magnetic CTA buttons ----------
+  // Buttons subtly translate toward the cursor on hover. Add class "magnetic" to opt in.
+  if (fine && !reduced) {
+    document.querySelectorAll('.magnetic').forEach(btn => {
+      const strength = 0.25; // 0 = none, 1 = follows exactly
+      btn.addEventListener('mousemove', e => {
+        const r = btn.getBoundingClientRect();
+        const x = (e.clientX - (r.left + r.width / 2)) * strength;
+        const y = (e.clientY - (r.top + r.height / 2)) * strength;
+        btn.style.transform = `translate(${x}px,${y}px)`;
+      });
+      btn.addEventListener('mouseleave', () => {
+        btn.style.transform = '';
+      });
+    });
+  }
+
+  // ---------- F. 3D tilt on pillar cards ----------
+  // Cards rotate slightly based on cursor position within them. Premium feel without being gimmicky.
+  if (fine && !reduced) {
+    document.querySelectorAll('.tilt').forEach(card => {
+      const max = 6; // max degrees of rotation
+      card.addEventListener('mousemove', e => {
+        const r = card.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - 0.5;
+        const py = (e.clientY - r.top) / r.height - 0.5;
+        card.style.transform = `perspective(800px) rotateY(${px * max}deg) rotateX(${-py * max}deg)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+    });
+  }
+
+  // ---------- G. Mouse-parallax on the orb ----------
+  // The orb translates a small amount with the cursor — it feels alive without being distracting.
+  if (fine && !reduced) {
+    const orb = document.getElementById('orb');
+    if (orb) {
+      let tx = 0, ty = 0, cx = 0, cy = 0;
+      document.addEventListener('mousemove', e => {
+        const cw = window.innerWidth, ch = window.innerHeight;
+        tx = ((e.clientX / cw) - 0.5) * 30;  // max 15px each direction
+        ty = ((e.clientY / ch) - 0.5) * 30;
+      });
+      const tickOrb = () => {
+        cx += (tx - cx) * 0.06;
+        cy += (ty - cy) * 0.06;
+        orb.style.transform = `translate(${cx}px,${cy}px)`;
+        requestAnimationFrame(tickOrb);
+      };
+      tickOrb();
+    }
+  }
+})();
+</script>
+
+</body>
+</html>
