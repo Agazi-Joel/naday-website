@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Podcasts — Selah</title>
+<meta name="description" content="The Selah podcast and audio library, with a player that follows you everywhere.">
+<link rel="icon" href="assets/logo.svg">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="provisional">“Selah” is a <b>placeholder name</b> for this prototype — see <a href="../docs/03-brand-identity.md">the brand doc</a>.</div>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html"><img src="assets/logo.svg" alt=""><span>Selah<small>read · listen · ask</small></span></a>
+    <button class="nav-burger" aria-label="Menu">☰</button>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="library.html">Library</a>
+      <a href="podcasts.html" class="active">Podcasts</a>
+      <a href="questions.html">Ask</a>
+      <a href="give.html">Give</a>
+      <a class="btn btn-primary btn-sm nav-cta" href="questions.html">Ask a question</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-intro">
+  <div class="wrap">
+    <div class="eyebrow">Podcasts &amp; Audio</div>
+    <h1>Press play. We’ll keep your place.</h1>
+    <p>One persistent player for the whole platform — podcasts and audiobooks alike. Every episode has a transcript (which also feeds the answer pipeline and search). Hit any ▶ below to see the player appear.</p>
+  </div>
+</section>
+
+<!-- SHOW HEADER -->
+<section class="section tight">
+  <div class="wrap">
+    <div class="grid" style="grid-template-columns:160px 1fr;gap:26px;align-items:center;">
+      <div class="cover cv5" style="aspect-ratio:1;border-radius:14px;"><span class="cmark">Podcast</span><span class="ct">Honest Questions</span></div>
+      <div>
+        <div class="tag">The flagship show</div>
+        <h2 style="margin:.3em 0 .2em;font-size:1.9rem;">Honest Questions</h2>
+        <p class="muted" style="max-width:52ch;">Real questions about God, doubt, suffering, and the life of faith — taken seriously and talked through with care. New episodes weekly. Many become written answers in the Ask archive.</p>
+        <button class="btn btn-gold btn-sm" data-play="Honest Questions — Ep.16|Where is God when it hurts?|⌘|41">▶ Play latest</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EPISODES -->
+<section class="section tight">
+  <div class="wrap">
+    <div class="sec-head"><h2>Episodes</h2><span class="muted">Newest first</span></div>
+
+    <div class="ep">
+      <div class="art cv5">16</div>
+      <div><h4>Where is God when it hurts?</h4><div class="epmeta">41 min · Suffering · Transcript available</div></div>
+      <button class="play" data-play="Honest Questions — Ep.16|Where is God when it hurts?|⌘|41" aria-label="Play">▶</button>
+    </div>
+    <div class="ep">
+      <div class="art cv1">15</div>
+      <div><h4>Is it okay to doubt?</h4><div class="epmeta">38 min · Doubt &amp; faith · Transcript available</div></div>
+      <button class="play" data-play="Honest Questions — Ep.15|Is it okay to doubt?|⌘|38" aria-label="Play">▶</button>
+    </div>
+    <div class="ep">
+      <div class="art cv3">14</div>
+      <div><h4>How do I start reading the Bible?</h4><div class="epmeta">35 min · Scripture · Transcript available</div></div>
+      <button class="play" data-play="Honest Questions — Ep.14|How do I start reading the Bible?|⌘|35" aria-label="Play">▶</button>
+    </div>
+    <div class="ep">
+      <div class="art cv2">13</div>
+      <div><h4>Prayer when you don’t feel anything</h4><div class="epmeta">29 min · Prayer · Transcript available</div></div>
+      <button class="play" data-play="Honest Questions — Ep.13|Prayer when you don’t feel anything|⌘|29" aria-label="Play">▶</button>
+    </div>
+    <div class="ep">
+      <div class="art cv4">12</div>
+      <div><h4>Faith and science: do I have to choose?</h4><div class="epmeta">44 min · Doubt &amp; faith · Transcript available</div></div>
+      <button class="play" data-play="Honest Questions — Ep.12|Faith and science|⌘|44" aria-label="Play">▶</button>
+    </div>
+  </div>
+</section>
+
+<!-- OTHER SHOWS -->
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head"><h2>More to listen to</h2></div>
+    <div class="cards">
+      <article class="card"><div class="cover cv6"><span class="cmark">Series</span><span class="ct">The Read-Aloud Archive</span><span class="ca">Written answers, spoken</span></div><div class="card-body"><div class="card-meta"><button class="btn btn-ghost btn-sm" data-play="The Read-Aloud Archive|Why does God allow suffering?|✶|6">▶ Listen</button></div></div></article>
+      <article class="card"><div class="cover cv1"><span class="cmark">Audiobook</span><span class="ct">Confessions</span><span class="ca">Augustine · narrated</span></div><div class="card-body"><div class="card-meta"><button class="btn btn-ghost btn-sm" data-play="Confessions (Audiobook)|Book I|📖|62">▶ Listen</button></div></div></article>
+      <article class="card"><div class="cover cv3"><span class="cmark">Series</span><span class="ct">Slow Mornings</span><span class="ca">Short daily readings</span></div><div class="card-body"><div class="card-meta"><button class="btn btn-ghost btn-sm" data-play="Slow Mornings|A reading for today|☀|7">▶ Listen</button></div></div></article>
+      <article class="card"><div class="cover cv5"><span class="cmark">Guest series</span><span class="ct">In Conversation</span><span class="ca">Writers &amp; pastors</span></div><div class="card-body"><div class="card-meta"><button class="btn btn-ghost btn-sm" data-play="In Conversation|On grief and hope|✦|52">▶ Listen</button></div></div></article>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div><div class="brand"><img src="assets/logo.svg" alt="" style="width:26px;vertical-align:middle;"> Selah</div><p>Read deeply. Listen closely. Ask anything.</p></div>
+      <div><h4>Explore</h4><ul><li><a href="library.html">Library</a></li><li><a href="podcasts.html">Podcasts</a></li><li><a href="questions.html">Ask</a></li><li><a href="give.html">Give</a></li></ul></div>
+      <div><h4>About</h4><ul><li><a href="../docs/00-executive-summary.md">The plan</a></li><li><a href="../docs/02-frontend-ux-teardown.md">UX teardown</a></li></ul></div>
+      <div><h4>Trust</h4><ul><li><a href="../docs/05-ai-qa-pipeline.md">How answers work</a></li><li>Statement of faith</li></ul></div>
+    </div>
+    <div class="fine"><span>© 2026 Selah (working name). A prototype.</span><span>Audio is mocked — the player UI is real.</span></div>
+  </div>
+</footer>
+
+<div class="player" id="player">
+  <div class="part" id="p-art">⌘</div>
+  <div class="pinfo"><div class="pt" id="p-title">Nothing playing</div><div class="ps" id="p-sub">Selah</div></div>
+  <button class="pbtn" title="Back 15s">⟲</button>
+  <button class="pbtn main" id="p-play">▶</button>
+  <button class="pbtn" title="Forward 15s">⟳</button>
+  <div class="ptrack" id="p-track"><div class="pfill" id="p-fill"></div></div>
+  <span class="ptime" id="p-time">0:00 / 0:00</span>
+  <span class="pspeed" id="p-speed">1.0×</span>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ask — Selah</title>
+<meta name="description" content="Ask an honest question about faith and get a full, thoughtful written answer — AI-drafted, human-reviewed.">
+<link rel="icon" href="assets/logo.svg">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="provisional">“Selah” is a <b>placeholder name</b> for this prototype — see <a href="../docs/03-brand-identity.md">the brand doc</a>.</div>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html"><img src="assets/logo.svg" alt=""><span>Selah<small>read · listen · ask</small></span></a>
+    <button class="nav-burger" aria-label="Menu">☰</button>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="library.html">Library</a>
+      <a href="podcasts.html">Podcasts</a>
+      <a href="questions.html" class="active">Ask</a>
+      <a href="give.html">Give</a>
+      <a class="btn btn-primary btn-sm nav-cta" href="#ask">Ask a question</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-intro">
+  <div class="wrap">
+    <div class="eyebrow">Ask · the heart of Selah</div>
+    <h1>Ask anything. Get a real answer, in writing.</h1>
+    <p>This is the part nothing else does. Submit an honest question about God, doubt, scripture, suffering, or life — and a legitimate one gets a <strong>full written answer</strong>: AI-drafted from scripture and trusted sources, then <strong>reviewed and edited by a person</strong> before it’s published. It joins a growing, searchable library so the next person finds it too.</p>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section tight band-vellum band-edge">
+  <div class="wrap">
+    <div class="features">
+      <div class="feature"><div class="ficon">✍️</div><h3>1 · You ask</h3><p class="muted">A short, warm form. Add context if you like. Submit anonymously if you’d rather — no judgment.</p></div>
+      <div class="feature"><div class="ficon">🧭</div><h3>2 · We draft</h3><p class="muted">AI reads it, finds what’s already been answered, and drafts a grounded, cited response from an approved corpus.</p></div>
+      <div class="feature"><div class="ficon">🪶</div><h3>3 · A person reviews</h3><p class="muted">An editor checks every answer against scripture and our stated beliefs before it’s ever published.</p></div>
+      <div class="feature"><div class="ficon">📚</div><h3>4 · It’s saved</h3><p class="muted">The answer becomes a permanent, searchable library entry — and you’re notified yours is ready.</p></div>
+    </div>
+    <p class="muted center" style="margin-top:24px;font-size:.9rem;">How this works in detail — including the safeguards — is written up in <a href="../docs/05-ai-qa-pipeline.md">the AI Q&amp;A pipeline doc</a>.</p>
+  </div>
+</section>
+
+<!-- THE FORM -->
+<section class="section" id="ask">
+  <div class="wrap" style="max-width:760px;">
+    <div class="sec-head"><h2>Ask your question</h2></div>
+
+    <form class="card-form" id="q-form">
+      <div class="field">
+        <label for="q">Your question <span class="hint">— say it however it comes out</span></label>
+        <textarea class="textarea" id="q" placeholder="e.g. If God is loving, why does he feel so far away when I’m suffering?" required></textarea>
+      </div>
+      <div class="field">
+        <label for="ctx">Anything else we should know? <span class="hint">(optional)</span></label>
+        <input class="input" id="ctx" placeholder="Context, where you’re coming from, what you’ve already tried…">
+      </div>
+      <div class="grid" style="grid-template-columns:1fr 1fr;gap:16px;">
+        <div class="field">
+          <label for="topic">Topic <span class="hint">(optional)</span></label>
+          <select class="input" id="topic">
+            <option>Not sure / other</option>
+            <option>Doubt &amp; faith</option>
+            <option>Suffering</option>
+            <option>Reading scripture</option>
+            <option>Prayer</option>
+            <option>Ethics &amp; living</option>
+            <option>Church &amp; community</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="email">Email <span class="hint">(to notify you — optional)</span></label>
+          <input class="input" id="email" type="email" placeholder="you@example.com">
+        </div>
+      </div>
+      <label class="checkrow" style="margin-bottom:18px;"><input type="checkbox" checked> Submit anonymously — don’t show my name on the published answer</label>
+      <button class="btn btn-gold" type="submit">Send my question</button>
+      <p class="muted" style="margin-top:1em;font-size:.84rem;">If you’re in crisis or danger, a question form isn’t the right help — we’ll always point to real, human resources rather than an AI answer. (See the safeguards in <a href="../docs/05-ai-qa-pipeline.md">the pipeline doc</a>.)</p>
+    </form>
+
+    <div class="card-form" id="q-confirm" style="display:none;text-align:center;border-color:var(--gold);">
+      <div style="font-size:2.4rem;">🕊️</div>
+      <h2 style="margin-top:.3em;">Thank you — your question is in.</h2>
+      <p class="muted" style="max-width:46ch;margin:0 auto 1em;">A draft answer will be prepared and <strong>reviewed by a person</strong> before it’s published. If you left an email, we’ll let you know when it’s ready. Meanwhile, your question may already be answered below.</p>
+      <p class="muted" style="font-size:.85rem;">(Prototype — nothing was actually submitted.)</p>
+    </div>
+  </div>
+</section>
+
+<!-- ARCHIVE -->
+<section class="section band-vellum band-edge">
+  <div class="wrap">
+    <div class="sec-head"><h2>Recently answered</h2><span class="muted">A growing, searchable library</span></div>
+    <input class="input" placeholder="🔎  Search answers — “suffering”, “doubt”, “how to pray”…" style="max-width:480px;margin-bottom:26px;">
+    <div class="grid" style="grid-template-columns:1fr 1fr;gap:20px;">
+      <div class="answer-card"><span class="badge-ai">✦ AI-drafted · human-reviewed</span><h3 style="margin-top:.5em;">If God is good, why is there so much suffering?</h3><p class="excerpt">Scripture doesn’t explain suffering away — it holds the question open in Job, the lament Psalms, and ultimately the cross…</p><div class="card-meta">Suffering · 6 min · cited</div></div>
+      <div class="answer-card"><span class="badge-ai">✦ AI-drafted · human-reviewed</span><h3 style="margin-top:.5em;">How do I start reading the Bible?</h3><p class="excerpt">Start where the story turns, not at page one. A Gospel, then the Psalms, then a letter — here’s a gentle path…</p><div class="card-meta">Scripture · 5 min · cited</div></div>
+      <div class="answer-card"><span class="badge-ai">✦ AI-drafted · human-reviewed</span><h3 style="margin-top:.5em;">Is it wrong to doubt my faith?</h3><p class="excerpt">Doubt isn’t the opposite of faith; honest questioning has a long, honored place in the tradition…</p><div class="card-meta">Doubt · 4 min · cited</div></div>
+      <div class="answer-card"><span class="badge-ai">✦ AI-drafted · human-reviewed</span><h3 style="margin-top:.5em;">What do I do when prayer feels like talking to the ceiling?</h3><p class="excerpt">You’re in good company — many of the Psalms are exactly this. Here’s what the tradition offers for the dry seasons…</p><div class="card-meta">Prayer · 5 min · cited</div></div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div><div class="brand"><img src="assets/logo.svg" alt="" style="width:26px;vertical-align:middle;"> Selah</div><p>Read deeply. Listen closely. Ask anything.</p></div>
+      <div><h4>Explore</h4><ul><li><a href="library.html">Library</a></li><li><a href="podcasts.html">Podcasts</a></li><li><a href="questions.html">Ask</a></li><li><a href="give.html">Give</a></li></ul></div>
+      <div><h4>About</h4><ul><li><a href="../docs/00-executive-summary.md">The plan</a></li><li><a href="../docs/05-ai-qa-pipeline.md">How answers work</a></li></ul></div>
+      <div><h4>Trust</h4><ul><li>Statement of faith</li><li>Privacy</li></ul></div>
+    </div>
+    <div class="fine"><span>© 2026 Selah (working name). A prototype.</span><span>Every answer is AI-drafted and human-reviewed.</span></div>
+  </div>
+</footer>
+
+<div class="player" id="player">
+  <div class="part" id="p-art">⌘</div>
+  <div class="pinfo"><div class="pt" id="p-title">Nothing playing</div><div class="ps" id="p-sub">Selah</div></div>
+  <button class="pbtn" title="Back 15s">⟲</button>
+  <button class="pbtn main" id="p-play">▶</button>
+  <button class="pbtn" title="Forward 15s">⟳</button>
+  <div class="ptrack" id="p-track"><div class="pfill" id="p-fill"></div></div>
+  <span class="ptime" id="p-time">0:00 / 0:00</span>
+  <span class="pspeed" id="p-speed">1.0×</span>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

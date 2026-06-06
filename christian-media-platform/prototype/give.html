@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Give — Selah</title>
+<meta name="description" content="Go premium and directly fund a Bible for someone who can’t afford one.">
+<link rel="icon" href="assets/logo.svg">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="provisional">“Selah” is a <b>placeholder name</b> for this prototype — see <a href="../docs/03-brand-identity.md">the brand doc</a>.</div>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html"><img src="assets/logo.svg" alt=""><span>Selah<small>read · listen · ask</small></span></a>
+    <button class="nav-burger" aria-label="Menu">☰</button>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="library.html">Library</a>
+      <a href="podcasts.html">Podcasts</a>
+      <a href="questions.html">Ask</a>
+      <a href="give.html" class="active">Give</a>
+      <a class="btn btn-primary btn-sm nav-cta" href="#gift">Gift a Bible</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-intro">
+  <div class="wrap">
+    <div class="eyebrow">Give</div>
+    <h1>Put a Bible in someone’s hands.</h1>
+    <p>Selah is paid partly by people who want to give — so that the door stays open
+      for those who can’t. Subscribe to keep it free for someone else, or directly
+      fund Bibles for people around the world. Transparent, and joyful — never a guilt trip.</p>
+  </div>
+</section>
+
+<!-- GIFT A BIBLE -->
+<section class="section" id="gift">
+  <div class="wrap">
+    <div class="gift-grid">
+      <div class="card-form">
+        <div class="tag">Gift a Bible</div>
+        <h2 style="margin:.4em 0;">How many Bibles would you like to fund?</h2>
+        <p class="muted">Each gift funds the printing and delivery of a Bible through a
+          distribution partner. Choose an amount:</p>
+        <div class="amount-row">
+          <button class="amount" data-bibles="1"><span class="n">$6</span><span class="l">1 Bible</span></button>
+          <button class="amount on" data-bibles="3"><span class="n">$18</span><span class="l">3 Bibles</span></button>
+          <button class="amount" data-bibles="5"><span class="n">$30</span><span class="l">5 Bibles</span></button>
+          <button class="amount" data-bibles="10"><span class="n">$60</span><span class="l">10 Bibles</span></button>
+        </div>
+        <div class="field">
+          <label for="region">Where should they go? <span class="hint">(optional)</span></label>
+          <select class="input" id="region">
+            <option>Where the need is greatest</option>
+            <option>Sub-Saharan Africa</option>
+            <option>South &amp; Southeast Asia</option>
+            <option>Middle East &amp; North Africa</option>
+            <option>Latin America</option>
+          </select>
+        </div>
+        <label class="checkrow" style="margin-bottom:18px;"><input type="checkbox"> Make this a monthly gift</label>
+        <p id="gift-summary" style="font-family:var(--serif-display);color:var(--gold);font-size:1.1rem;margin-bottom:1em;">You’ll fund 3 Bibles — thank you.</p>
+        <button class="btn btn-gold" id="gift-btn">Give now</button>
+        <p class="muted" style="margin-top:1em;font-size:.84rem;">Prototype — no real charge. In production this is a Stripe / nonprofit-donation flow; see <a href="../docs/07-monetization.md">the monetization doc</a>.</p>
+      </div>
+
+      <div>
+        <div class="impact" style="margin-bottom:20px;">
+          <div class="big">12,480</div>
+          <div class="lbl">Bibles funded by this community</div>
+        </div>
+        <div class="card-form">
+          <h3 style="margin-top:0;">Where your money goes</h3>
+          <p class="muted" style="font-size:.95rem;">We believe generosity should be transparent. Our intended model:</p>
+          <ul style="list-style:none;padding:0;margin:0;font-size:.95rem;line-height:2;color:var(--ink-soft);">
+            <li>✦ The majority of every gift funds actual Bibles via a distribution partner</li>
+            <li>✦ The split (Bibles vs. processing vs. overhead) is published openly</li>
+            <li>✦ Subscriptions — not gifts — cover the platform’s running costs</li>
+          </ul>
+          <p class="muted" style="font-size:.82rem;margin-top:1em;">The exact fulfillment partner and the transparency model are <a href="../docs/09-open-decisions.md">still open decisions</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIERS -->
+<section class="section band-vellum band-edge">
+  <div class="wrap">
+    <div class="sec-head"><h2>Or subscribe — and lift others as you go</h2></div>
+    <div class="tiers">
+      <div class="tier">
+        <h3>Free</h3>
+        <div class="price">$0</div>
+        <p class="muted" style="font-size:.9rem;">For everyone, always.</p>
+        <ul>
+          <li>Ask questions &amp; read every answer</li>
+          <li>A sample of books &amp; episodes</li>
+          <li>Weekly free content</li>
+        </ul>
+        <a class="btn btn-ghost" href="questions.html">Start free</a>
+      </div>
+      <div class="tier feature-tier">
+        <h3>Member</h3>
+        <div class="price">$9<small> / month</small></div>
+        <p class="muted" style="font-size:.9rem;">~$80/yr · billed annually.</p>
+        <ul>
+          <li>The full library — books &amp; audio</li>
+          <li>Offline downloads &amp; the full reader</li>
+          <li>Ad-free, priority Q&amp;A</li>
+          <li>Keeps Selah free for someone who can’t pay</li>
+        </ul>
+        <a class="btn btn-gold" href="#">Become a member</a>
+      </div>
+      <div class="tier">
+        <h3>Generosity</h3>
+        <div class="price">$25<small> / month</small></div>
+        <p class="muted" style="font-size:.9rem;">The mission tier.</p>
+        <ul>
+          <li>Everything in Member</li>
+          <li>Funds Bibles every month</li>
+          <li>Sponsors free memberships for others</li>
+          <li>Your impact, shown to you</li>
+        </ul>
+        <a class="btn btn-primary" href="#">Join the mission</a>
+      </div>
+    </div>
+    <p class="muted center" style="margin-top:22px;font-size:.86rem;">All prices are illustrative placeholders — final pricing is an <a href="../docs/09-open-decisions.md">open decision</a>.</p>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div><div class="brand"><img src="assets/logo.svg" alt="" style="width:26px;vertical-align:middle;"> Selah</div><p>Read deeply. Listen closely. Ask anything.</p></div>
+      <div><h4>Explore</h4><ul><li><a href="library.html">Library</a></li><li><a href="podcasts.html">Podcasts</a></li><li><a href="questions.html">Ask</a></li><li><a href="give.html">Give</a></li></ul></div>
+      <div><h4>About</h4><ul><li><a href="../docs/00-executive-summary.md">The plan</a></li><li><a href="../docs/07-monetization.md">Monetization</a></li></ul></div>
+      <div><h4>Trust</h4><ul><li><a href="../docs/05-ai-qa-pipeline.md">How answers work</a></li><li>Statement of faith</li></ul></div>
+    </div>
+    <div class="fine"><span>© 2026 Selah (working name). A prototype.</span><span>No real payments — Stripe / donation flow in production.</span></div>
+  </div>
+</footer>
+
+<div class="player" id="player">
+  <div class="part" id="p-art">⌘</div>
+  <div class="pinfo"><div class="pt" id="p-title">Nothing playing</div><div class="ps" id="p-sub">Selah</div></div>
+  <button class="pbtn" title="Back 15s">⟲</button>
+  <button class="pbtn main" id="p-play">▶</button>
+  <button class="pbtn" title="Forward 15s">⟳</button>
+  <div class="ptrack" id="p-track"><div class="pfill" id="p-fill"></div></div>
+  <span class="ptime" id="p-time">0:00 / 0:00</span>
+  <span class="pspeed" id="p-speed">1.0×</span>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
