@@ -1,0 +1,7 @@
+{
+  "_comment": "Copy this to finance-data/accounts.json and edit. It tells the bookkeeper how to classify each account on the balance sheet and what the balance was BEFORE your earliest statement. 'account' must match the account name produced during ingestion (by default the CSV filename without extension, or the --account you pass). 'type': asset (chequing/savings/cash) or liability (credit card/loan/line of credit). 'opening_balance': the balance immediately before your first imported transaction (used only when a statement has no running-balance column). For a credit card, opening_balance is what you OWED, entered as a positive number.",
+  "accounts": [
+    { "account": "sample-checking",    "type": "asset",     "opening_balance": 12000.00, "label": "Business Chequing" },
+    { "account": "sample-creditcard",  "type": "liability", "opening_balance": 1850.00,  "label": "Business Visa" }
+  ]
+}

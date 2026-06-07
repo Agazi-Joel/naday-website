@@ -1,0 +1,24 @@
+{
+  "_comment": "Categorization rules for bank transactions. The FIRST rule whose any pattern matches the (lower-cased) description wins. Patterns are treated as regular expressions. 'kind' is income | expense | transfer and controls how the bookkeeper treats the line (transfers are excluded from P&L). Edit freely — this file is safe to commit (no personal data).",
+  "default_income": "Other income",
+  "default_expense": "Uncategorized",
+  "rules": [
+    { "category": "Transfer",        "kind": "transfer", "patterns": ["transfer", "xfer", "to savings", "from savings", "internal", "online banking payment", "credit card payment", "autopay", "e-transfer"] },
+    { "category": "Salary / Payroll","kind": "income",   "patterns": ["payroll", "salary", "direct deposit", "dir dep", "gusto", "adp", "remitly"] },
+    { "category": "Client revenue",  "kind": "income",   "patterns": ["stripe", "square", "paypal", "invoice", "client", "deposit", "remittance", "interac"] },
+    { "category": "Interest income", "kind": "income",   "patterns": ["interest", "dividend"] },
+    { "category": "Refund",          "kind": "income",   "patterns": ["refund", "reversal", "credit adjustment"] },
+    { "category": "Rent / Lease",    "kind": "expense",  "patterns": ["rent", "landlord", "lease", "property mgmt", "wework"] },
+    { "category": "Payroll out",     "kind": "expense",  "patterns": ["payroll fee", "gusto fee", "contractor", "subcontractor"] },
+    { "category": "Software / SaaS", "kind": "expense",  "patterns": ["aws", "google", "github", "openai", "anthropic", "notion", "slack", "zoom", "adobe", "figma", "microsoft", "dropbox", "godaddy", "namecheap", "vercel", "netlify", "digitalocean", "cloudflare", "subscription", "saas"] },
+    { "category": "Utilities",       "kind": "expense",  "patterns": ["hydro", "electric", "water", "gas bill", "utility", "internet", "comcast", "verizon", "att", "rogers", "bell", "telus", "phone"] },
+    { "category": "Insurance",       "kind": "expense",  "patterns": ["insurance", "geico", "allstate", "manulife", "sunlife"] },
+    { "category": "Bank fees",       "kind": "expense",  "patterns": ["fee", "service charge", "overdraft", "nsf", "atm", "interest charge", "wire fee"] },
+    { "category": "Taxes",           "kind": "expense",  "patterns": ["irs", "cra", "tax", "hmrc", "sales tax", "gst", "hst", "remittance to"] },
+    { "category": "Travel",          "kind": "expense",  "patterns": ["airline", "air canada", "united", "delta", "uber", "lyft", "hotel", "airbnb", "marriott", "expedia", "flight", "rail", "via rail"] },
+    { "category": "Meals",           "kind": "expense",  "patterns": ["restaurant", "cafe", "coffee", "starbucks", "tim hortons", "doordash", "ubereats", "skip", "grubhub", "mcdonald"] },
+    { "category": "Office / Supplies","kind": "expense", "patterns": ["staples", "amazon", "office", "best buy", "supply", "printer"] },
+    { "category": "Professional services","kind":"expense","patterns": ["legal", "lawyer", "accountant", "bookkeep", "consult", "audit", "notary"] },
+    { "category": "Marketing",       "kind": "expense",  "patterns": ["facebook ads", "google ads", "meta", "linkedin", "mailchimp", "ad spend", "campaign"] }
+  ]
+}

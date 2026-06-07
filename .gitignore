@@ -1,0 +1,26 @@
+# ============================================================================
+#  Finance system — NEVER commit real financial data or generated outputs.
+#  This repo is published to GitHub Pages (public). Bank statements, the
+#  ledger, the balance sheet, and the dashboard must stay local only.
+# ============================================================================
+finance-data/**
+
+# ...but DO keep the folder's docs and the synthetic sample data.
+!finance-data/
+!finance-data/README.md
+!finance-data/sample/
+!finance-data/sample/**
+
+# Generated finance outputs, wherever they land
+ledger.csv
+finances.json
+dashboard.html
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.swp
+
+# Python
+__pycache__/
+*.pyc
