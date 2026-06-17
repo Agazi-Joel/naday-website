@@ -15,6 +15,19 @@ work with. This is the bridge between "reading a PDF" and "having usable notes."
   then export that note (Markdown/HTML) into `papers/2-processing/`. Read it here.
 - A plain notes file she typed while reading.
 
+## Fastest path: the extraction script (automatic, free)
+This skill ships with `extract_annotations.py`. It reads the highlights + comments
+straight out of the PDF — no paid software, works offline. One-time setup:
+`pip install pymupdf`. Then:
+
+```
+python .claude/skills/extract-annotations/extract_annotations.py papers/2-processing/ -o notes/raw-annotations.md
+```
+
+Run this first. If it returns annotations, use that Markdown as the input and skip
+to step 3 (tagging). Only fall back to reading the PDF visually if the script finds
+nothing (e.g. the file was flattened/printed to PDF, which destroys annotation data).
+
 ## Steps
 1. For each source, list its annotations **in reading order**, preserving:
    - the highlighted text (quote it),

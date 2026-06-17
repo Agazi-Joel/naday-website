@@ -32,9 +32,17 @@ See `knowledge/workspace-conventions.md`.
 
 ## Reading & note-taking (Zotero or just a folder)
 
-1. Read and **highlight + comment** in any PDF reader (or Zotero's).
+No paid software needed. Highlights and comments are saved inside the PDF by any
+free reader (Zotero's built-in reader, macOS Preview, Adobe Acrobat **Reader**,
+Foxit, Okular…). Don't "flatten" or print-to-PDF — that destroys the annotation data.
+
+1. Read and **highlight + comment** in any free PDF reader.
 2. Save the annotated PDF in `papers/2-processing/`.
-3. `extract-annotations` pulls out the highlights + comments.
+3. `extract-annotations` pulls out the highlights + comments **automatically** via
+   its bundled script (`pip install pymupdf` once):
+   ```
+   python .claude/skills/extract-annotations/extract_annotations.py papers/2-processing/ -o notes/raw-annotations.md
+   ```
 4. `note-assimilator` clusters them across papers into themed notes in `notes/`.
 
 If she uses **Zotero**: right-click an item → *Add Note from Annotations* →
