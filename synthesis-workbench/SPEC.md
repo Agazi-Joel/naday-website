@@ -47,6 +47,26 @@ already building. Where this spec recommends a stack, **prefer the host app's st
 if it differs. The data model, the supervisor behaviours, and the Word handoff are
 the portable core; the shell/UI should match what the host app already does.
 
+### Lineage & where each part lives (so nothing is lost)
+The wider vision we started from had three module groups: **Discovery** (field survey,
+top-journal finder, paper search), **Read & process** (paper summary, annotation
+extraction, note assimilation), **Think** (supervisor critique, Socratic discussant,
+argument builder, theory-to-practice), and **Output** (essay, presentation, paper
+summary). We deliberately narrowed *this app's v1* to the **synthesis / "Think" layer**
+— the claim-formation gap no tool fills — because that is the highest-value, least-served
+piece. The other groups are **not dropped**; they live as:
+- the companion **`research-workspace/` skills package** (the discovery, read/process,
+  think, and output skills, plus the discipline knowledge — see §7.7), and
+- the maintainer's **existing PhD-workspace skills** (Zotero ingestion, supervisor,
+  paper-extraction/output skills) which this app **reuses** (BUILD.md §0c).
+
+Because claims are **output-agnostic**, the same locked claim-sequence can later project
+into an **essay** *or* a **presentation** *or* a dissertation chapter — so the Output group
+becomes additional projection targets (a v2 sibling of the Word handoff), not a rebuild.
+Discovery and full paper-processing stay upstream/adjacent and feed `Atom`s in. None of
+this is in v1 scope (§ Out of scope), but it is recorded here so the narrowing is a
+deliberate decision, not a loss.
+
 ---
 
 ## 2. The user & the constraints that shape every decision
@@ -296,6 +316,21 @@ When extracting a claim from selected atoms, or proposing a claim's parts, use
 `output_config.format` with a JSON schema matching the `Claim` shape (§5.4) so the result
 parses deterministically into the model. Use `strict: true` tools where the model fills a
 fixed structure.
+
+### 7.7 Discipline knowledge the supervisor should draw on
+The student is in **healthcare leadership & management**; the supervisor's critique and
+citations must reflect that. Wire it to the workspace's domain knowledge (it already exists
+in `research-workspace/knowledge/` — reuse, don't re-author):
+- **Frameworks + their critiques** — leadership/change/QI models (transformational vs
+  transactional, compassionate/collective, system leadership, Kotter, Lewin, PDSA, etc.)
+  so claim-testing can name a model *and* its standard critique (critical evaluation earns marks).
+- **Sources** — credible **grey literature** (King's Fund, Nuffield Trust, Health Foundation,
+  NHS England, CQC, NICE) ranks as legitimate evidence alongside peer-reviewed journals.
+- **Citation style** — **Harvard (Cite Them Right)** is the default for cited bullets and
+  references (§10). Keep it in one config value; **confirm against her module handbook** —
+  if it differs (e.g. APA 7th), change that one value and everything follows.
+- **What earns marks** — bias the supervisor toward *critical evaluation* and *application
+  to her NHS practice*, not description.
 
 ---
 
