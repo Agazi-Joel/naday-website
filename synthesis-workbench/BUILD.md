@@ -76,6 +76,11 @@ short written brief. Specifically:
   worked and avoid past mistakes.
 - **Architecture & stack:** identify the language, framework, UI toolkit, storage, and how
   the **Zotero ingestion** and **supervisor** are implemented and invoked.
+- **Discipline knowledge (shipped with this spec):** also read the `research-workspace/knowledge/`
+  folder shipped alongside this spec — frameworks + their critiques, NHS grey-literature
+  sources, Harvard *Cite Them Right* citation, and field context. **Reuse it** for the
+  supervisor's discipline knowledge (`SPEC.md` §7.7) rather than re-authoring; prefer the
+  existing PhD-workspace equivalents where they already exist.
 
 Output a **Reuse & Lessons Brief**:
 1. A table mapping spec modules → existing component (reuse / extend / build-new).
@@ -200,7 +205,8 @@ Each slice: **Goal · Touches · Done-when (demoable) · Tests.** Build in order
 
 ## 8. Kickoff prompt (paste into Claude Code on the laptop)
 
-> Read `BUILD.md`, `SPEC.md`, and `DECISIONS.md` in this project. Then execute **Phase 0**:
+> Read `BUILD.md`, `SPEC.md`, and `DECISIONS.md` in this project, and skim
+> `research-workspace/knowledge/` (discipline frameworks, sources, citation). Then execute **Phase 0**:
 > obey my global `CLAUDE.md`; ensure the front-end skill and the `superpowers` skill are
 > installed (install if missing per BUILD.md §0b); and review my existing PhD-workspace
 > skills (especially output / processing / paper-extraction), past build-session notes, and
