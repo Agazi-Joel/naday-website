@@ -1,0 +1,127 @@
+{
+  "_note": "SYNTHETIC data only (PRD C2/S5). All names, emails, subjects and content are invented. Covers edge cases E1-E8. Timezone Europe/London (E7).",
+  "own_addresses": ["practitioner@adriels.example", "assessments@adriels.example"],
+  "threads": [
+    {
+      "_case": "Happy path: agency SW thread, they replied last -> ball with Me",
+      "threadId": "t-1001",
+      "subject": "Re: Stage 2 visit availability",
+      "inTrash": false,
+      "labels": ["INBOX"],
+      "messages": [
+        {"id": "m1", "from": "practitioner@adriels.example", "to": ["kper@shinefostering.example"], "cc": [], "bcc": [], "date": "2026-07-06T09:15:00+01:00", "hasAttachments": false, "attachmentNames": []},
+        {"id": "m2", "from": "Karen Peart <kper@shinefostering.example>", "to": ["practitioner@adriels.example"], "cc": [], "bcc": [], "date": "2026-07-07T14:02:00+01:00", "hasAttachments": false, "attachmentNames": []}
+      ]
+    },
+    {
+      "_case": "Outbound-initiated, I sent last -> ball with Them; has attachment",
+      "threadId": "t-1002",
+      "subject": "[F-2026-014] Reference form attached",
+      "inTrash": false,
+      "labels": ["SENT"],
+      "messages": [
+        {"id": "m3", "from": "assessments@adriels.example", "to": ["referee.one@example.org"], "cc": [], "bcc": [], "date": "2026-07-10T11:00:00+01:00", "hasAttachments": true, "attachmentNames": ["reference_form.pdf"]}
+      ]
+    },
+    {
+      "_case": "E2: notes-to-self, only own address -> counterparties empty, ball N/A",
+      "threadId": "t-1003",
+      "subject": "Panel prep checklist",
+      "inTrash": false,
+      "labels": ["INBOX"],
+      "messages": [
+        {"id": "m4", "from": "practitioner@adriels.example", "to": ["practitioner@adriels.example"], "cc": [], "bcc": [], "date": "2026-07-11T20:30:00+01:00", "hasAttachments": false, "attachmentNames": []}
+      ]
+    },
+    {
+      "_case": "E3: last message sent from a send-as alias -> still Me",
+      "threadId": "t-1004",
+      "subject": "Re: Consent to approach ex-partner",
+      "inTrash": false,
+      "labels": ["SENT"],
+      "messages": [
+        {"id": "m5", "from": "applicant.a@example.net", "to": ["assessments@adriels.example"], "cc": [], "bcc": [], "date": "2026-07-12T08:00:00+01:00", "hasAttachments": false, "attachmentNames": []},
+        {"id": "m6", "from": "Adriels Assessments <assessments@adriels.example>", "to": ["applicant.a@example.net"], "cc": [], "bcc": [], "date": "2026-07-12T09:45:00+01:00", "hasAttachments": false, "attachmentNames": []}
+      ]
+    },
+    {
+      "_case": "E1: same counterparty (agency SW) appears across two active assessments -> ambiguous, no auto-tag",
+      "threadId": "t-1005",
+      "subject": "Quick question on two of your cases",
+      "inTrash": false,
+      "labels": ["INBOX"],
+      "messages": [
+        {"id": "m7", "from": "kper@shinefostering.example", "to": ["assessments@adriels.example"], "cc": [], "bcc": [], "date": "2026-07-13T10:10:00+01:00", "hasAttachments": false, "attachmentNames": []}
+      ]
+    },
+    {
+      "_case": "Domain-only match -> suggest via domain precedence",
+      "threadId": "t-1006",
+      "subject": "New referral enquiry",
+      "inTrash": false,
+      "labels": ["INBOX"],
+      "messages": [
+        {"id": "m8", "from": "intake@brightpathla.example", "to": ["assessments@adriels.example"], "cc": [], "bcc": [], "date": "2026-07-13T12:00:00+01:00", "hasAttachments": false, "attachmentNames": []}
+      ]
+    },
+    {
+      "_case": "E4: thread since trashed -> flag thread_missing, keep row",
+      "threadId": "t-1007",
+      "subject": "Re: Old query",
+      "inTrash": true,
+      "labels": ["TRASH"],
+      "messages": [
+        {"id": "m9", "from": "someone@example.org", "to": ["assessments@adriels.example"], "cc": [], "bcc": [], "date": "2026-07-01T09:00:00+01:00", "hasAttachments": false, "attachmentNames": []}
+      ]
+    },
+    {
+      "_case": "E5: extremely long thread (100+ messages) -> msg_count correct, metadata only",
+      "threadId": "t-1008",
+      "subject": "Long-running scheduling thread",
+      "inTrash": false,
+      "labels": ["INBOX"],
+      "_generate": {"messages": 120, "alternate_from": ["assessments@adriels.example", "referee.two@example.org"], "start_date": "2026-07-01T09:00:00+01:00"}
+    },
+    {
+      "_case": "Ignore-label thread (newsletter) -> excluded by Config ignore_labels at sync layer",
+      "threadId": "t-1009",
+      "subject": "Weekly sector newsletter",
+      "inTrash": false,
+      "labels": ["INBOX", "Newsletters"],
+      "messages": [
+        {"id": "m10", "from": "news@sectorupdate.example", "to": ["assessments@adriels.example"], "cc": [], "bcc": [], "date": "2026-07-13T06:00:00+01:00", "hasAttachments": false, "attachmentNames": []}
+      ]
+    },
+    {
+      "_case": "Subject-tag exact match to single active assessment -> auto-apply",
+      "threadId": "t-1010",
+      "subject": "[F-2026-014] Availability confirmed",
+      "inTrash": false,
+      "labels": ["INBOX"],
+      "messages": [
+        {"id": "m11", "from": "applicant.a@example.net", "to": ["assessments@adriels.example"], "cc": [], "bcc": [], "date": "2026-07-14T15:00:00+01:00", "hasAttachments": false, "attachmentNames": []}
+      ]
+    },
+    {
+      "_case": "Group/CC mail with own address in CC only -> counterparties exclude own; ball derived from last external sender",
+      "threadId": "t-1011",
+      "subject": "Multi-party coordination",
+      "inTrash": false,
+      "labels": ["INBOX"],
+      "messages": [
+        {"id": "m12", "from": "la.contact@brightpathla.example", "to": ["kper@shinefostering.example"], "cc": ["assessments@adriels.example"], "bcc": [], "date": "2026-07-14T16:20:00+01:00", "hasAttachments": true, "attachmentNames": ["minutes.pdf", "actions.docx"]}
+      ]
+    },
+    {
+      "_case": "Reopened: previously Closed row, new inbound activity -> flip to Open + Reopened flag",
+      "threadId": "t-1012",
+      "subject": "Re: Reference (thought this was done)",
+      "inTrash": false,
+      "labels": ["INBOX"],
+      "priorStatus": "Closed",
+      "messages": [
+        {"id": "m13", "from": "referee.one@example.org", "to": ["assessments@adriels.example"], "cc": [], "bcc": [], "date": "2026-07-15T08:30:00+01:00", "hasAttachments": false, "attachmentNames": []}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "_note": "SYNTHETIC seed rows for the Assessments sheet. family_ref uses initials + ref only (PRD S2). No full names.",
+  "rows": [
+    {"assessment_id": "F-2026-014", "family_ref": "A.B. / ref-014", "commissioning_agency": "Shine Fostering", "stage": "Stage2", "date_commissioned": "2026-05-02", "panel_date": "2026-09-10", "status": "Active", "lead_contact": "kper@shinefostering.example", "notes": "Synthetic."},
+    {"assessment_id": "F-2026-015", "family_ref": "C.D. / ref-015", "commissioning_agency": "Shine Fostering", "stage": "Stage1", "date_commissioned": "2026-06-18", "panel_date": null, "status": "Active", "lead_contact": "kper@shinefostering.example", "notes": "Synthetic. Shares agency SW with 014 (drives E1 ambiguity)."},
+    {"assessment_id": "F-2026-016", "family_ref": "E.F. / ref-016", "commissioning_agency": "Brightpath LA", "stage": "Referral", "date_commissioned": "2026-07-13", "panel_date": null, "status": "Active", "lead_contact": "intake@brightpathla.example", "notes": "Synthetic."},
+    {"assessment_id": "F-2025-009", "family_ref": "G.H. / ref-009", "commissioning_agency": "Shine Fostering", "stage": "Complete", "date_commissioned": "2025-11-01", "panel_date": "2026-03-04", "status": "Closed", "lead_contact": "kper@shinefostering.example", "notes": "Synthetic. Closed - not active, must not receive suggestions."}
+  ]
+}

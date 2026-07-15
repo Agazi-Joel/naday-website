@@ -1,0 +1,11 @@
+{
+  "_note": "SYNTHETIC Contacts_Map rows. Precedence: exact email > domain > none. Duplicate active mappings for one email => ambiguous => no suggestion (E1).",
+  "rows": [
+    {"email_or_domain": "kper@shinefostering.example", "default_assessment_id": "F-2026-014", "contact_name": "Agency SW (synthetic)", "role": "Agency SW", "active": true},
+    {"email_or_domain": "kper@shinefostering.example", "default_assessment_id": "F-2026-015", "contact_name": "Agency SW (synthetic)", "role": "Agency SW", "active": true},
+    {"email_or_domain": "referee.one@example.org", "default_assessment_id": "F-2026-014", "contact_name": "Referee 1 (synthetic)", "role": "Referee", "active": true},
+    {"email_or_domain": "applicant.a@example.net", "default_assessment_id": "F-2026-014", "contact_name": "Applicant A (synthetic)", "role": "Applicant", "active": true},
+    {"email_or_domain": "@brightpathla.example", "default_assessment_id": "F-2026-016", "contact_name": "Brightpath LA (synthetic)", "role": "LA", "active": true},
+    {"email_or_domain": "referee.two@example.org", "default_assessment_id": "F-2025-009", "contact_name": "Referee 2 (synthetic)", "role": "Referee", "active": false}
+  ]
+}

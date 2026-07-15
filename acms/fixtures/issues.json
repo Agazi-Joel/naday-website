@@ -1,0 +1,8 @@
+{
+  "_note": "SYNTHETIC Issues_Risks seed rows.",
+  "rows": [
+    {"issue_id": "F-2026-014-I-01", "assessment_id": "F-2026-014", "type": "Task", "title": "Chase ex-partner reference", "owner": "Me", "owner_name": "Practitioner", "status": "Waiting", "due_date": "2026-07-20", "raised_date": "2026-07-05", "resolution": "", "last_comm_date": "2026-07-10"},
+    {"issue_id": "F-2026-014-I-02", "assessment_id": "F-2026-014", "type": "InfoNeed", "title": "Confirm Stage 2 visit availability", "owner": "Them", "owner_name": "Applicant A", "status": "Open", "due_date": "2026-07-18", "raised_date": "2026-07-06", "resolution": "", "last_comm_date": "2026-07-07"},
+    {"issue_id": "F-2026-015-I-01", "assessment_id": "F-2026-015", "type": "Decision", "title": "Agree provisional panel date", "owner": "Shared", "owner_name": "Agency SW", "status": "Open", "due_date": "2026-08-01", "raised_date": "2026-07-01", "resolution": "", "last_comm_date": ""}
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "_note": "SYNTHETIC template seed set (8). Structural 80% only; the practitioner adds the relational 20% in Gmail before sending (PRD 6.6). Placeholders: {{assessment_id}} {{family_ref}} {{issue_title}} {{due_date}} {{recipient_name}} {{my_name}}",
+  "rows": [
+    {
+      "template_id": "T-REQ-REF",
+      "comm_type": "Request",
+      "name": "Chase referee (reference outstanding)",
+      "subject_template": "[{{assessment_id}}] Reference request — gentle reminder",
+      "body_template": "Dear {{recipient_name}},\n\nI am writing regarding the reference I requested in connection with a fostering assessment. My records show it is still outstanding, and I would be grateful to receive it by {{due_date}} so the assessment can progress.\n\nIf it would help to complete it by phone instead, do let me know a convenient time.\n\nWith thanks,\n{{my_name}}",
+      "default_priority": "Normal"
+    },
+    {
+      "template_id": "T-REQ-AVAIL",
+      "comm_type": "Request",
+      "name": "Availability request (visit scheduling)",
+      "subject_template": "[{{assessment_id}}] Availability for the next assessment visit",
+      "body_template": "Dear {{recipient_name}},\n\nWe are ready to arrange the next assessment visit. Please could you let me know two or three dates and times that would suit you over the coming fortnight?\n\nI will confirm as soon as I hear back.\n\nKind regards,\n{{my_name}}",
+      "default_priority": "Normal"
+    },
+    {
+      "template_id": "T-REQ-DOC",
+      "comm_type": "Request",
+      "name": "Document request (missing evidence)",
+      "subject_template": "[{{assessment_id}}] Outstanding document — {{issue_title}}",
+      "body_template": "Dear {{recipient_name}},\n\nTo complete this part of the assessment I still need the following: {{issue_title}}. Please could you send it across by {{due_date}}?\n\nIf anything about the request is unclear, I am happy to talk it through.\n\nKind regards,\n{{my_name}}",
+      "default_priority": "Normal"
+    },
+    {
+      "template_id": "T-REL-AGENCY",
+      "comm_type": "Relay",
+      "name": "Progress update to commissioning agency",
+      "subject_template": "[{{assessment_id}}] Progress update",
+      "body_template": "Dear {{recipient_name}},\n\nA brief update on assessment {{assessment_id}} ({{family_ref}}). Current position:\n\n• [summary point]\n• [next step and expected timing]\n\nI will send the next update at the next milestone, or sooner if anything material changes.\n\nKind regards,\n{{my_name}}",
+      "default_priority": "Normal"
+    },
+    {
+      "template_id": "T-REL-APPLICANT",
+      "comm_type": "Relay",
+      "name": "Information to applicant",
+      "subject_template": "[{{assessment_id}}] Information for you",
+      "body_template": "Dear {{recipient_name}},\n\nI wanted to pass on the following in connection with your assessment:\n\n[information]\n\nPlease do get in touch if you have any questions.\n\nKind regards,\n{{my_name}}",
+      "default_priority": "Normal"
+    },
+    {
+      "template_id": "T-DEC-PANEL",
+      "comm_type": "Decision",
+      "name": "Decision needed — panel date",
+      "subject_template": "[{{assessment_id}}] Decision needed: panel date",
+      "body_template": "Dear {{recipient_name}},\n\nWe are at the point of fixing a panel date for {{assessment_id}} ({{family_ref}}). To move forward I need a decision on the following:\n\n• Option A: [date]\n• Option B: [date]\n\nCould you confirm your preference by {{due_date}}? Once decided I will make the arrangements.\n\nKind regards,\n{{my_name}}",
+      "default_priority": "High"
+    },
+    {
+      "template_id": "T-REC-DISC",
+      "comm_type": "Record",
+      "name": "Confirmation of discussion (file note by email)",
+      "subject_template": "[{{assessment_id}}] For the record — summary of our discussion",
+      "body_template": "Dear {{recipient_name}},\n\nFor the record, this note confirms my understanding of what we discussed today:\n\n• [point discussed]\n• [any action agreed, and by whom]\n\nPlease let me know by {{due_date}} if anything here does not match your recollection; otherwise I will take this as an accurate record.\n\nKind regards,\n{{my_name}}",
+      "default_priority": "Normal"
+    },
+    {
+      "template_id": "T-REC-CONSENT",
+      "comm_type": "Record",
+      "name": "Confirmation of consent received",
+      "subject_template": "[{{assessment_id}}] For the record — consent received",
+      "body_template": "Dear {{recipient_name}},\n\nThank you — this confirms for the record that I have received your consent in relation to {{issue_title}}. I have noted it on file for assessment {{assessment_id}}.\n\nKind regards,\n{{my_name}}",
+      "default_priority": "Normal"
+    }
+  ]
+}

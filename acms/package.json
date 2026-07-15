@@ -1,0 +1,10 @@
+{
+  "name": "acms",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Assessment Communications Management System — Google Apps Script + Sheets + Gmail. Draft-only, no external services, no AI in the data path.",
+  "scripts": {
+    "test": "node tests/core.test.js && node tests/no-send.test.js",
+    "syntax": "node -e \"const fs=require('fs'),vm=require('vm'),path=require('path');let bad=0;for(const f of fs.readdirSync('src').filter(x=>x.endsWith('.gs'))){try{new vm.Script(fs.readFileSync(path.join('src',f),'utf8'),{filename:f})}catch(e){bad++;console.error('SYNTAX ERROR',f,e.message)}}process.exit(bad?1:0)\""
+  }
+}
