@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Naday sermon pipeline — one command, one YouTube link, a full content set.
+"""House of Prayer Ministries sermon pipeline — one command, one YouTube link, a full content set.
 
     python run.py "https://www.youtube.com/watch?v=..."
     python run.py path/to/local-recording.m4a

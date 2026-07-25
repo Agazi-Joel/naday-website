@@ -1,1 +1,1 @@
-"""Naday sermon pipeline: YouTube link -> edited sermon, summary, captions, podcast."""
+"""House of Prayer Ministries sermon pipeline: YouTube link -> sermon, summary, captions, podcast."""

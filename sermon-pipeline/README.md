@@ -1,4 +1,4 @@
-# Naday Sermon Pipeline
+# House of Prayer Ministries — Sermon Pipeline
 
 Run a sermon (YouTube link or a recording) through one command and get back:
 
@@ -10,7 +10,7 @@ Run a sermon (YouTube link or a recording) through one command and get back:
 
 This is v1: designed to work now and be fine-tuned later. The editorial voice
 lives in one place (`pipeline/config.py` → `HOUSE_STYLE`) so you can dial in the
-Naday style over time without touching the plumbing.
+House of Prayer style over time without touching the plumbing.
 
 ## Setup
 

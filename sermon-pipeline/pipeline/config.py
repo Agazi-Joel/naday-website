@@ -1,7 +1,7 @@
 """Configuration + the house-style spec that steers every rewrite.
 
 Everything here is a plain default you can tune later. The house style is what
-turns "a generic summary" into "a Naday-sounding one" — edit `HOUSE_STYLE`
+turns "a generic summary" into "a House of Prayer one" — edit `HOUSE_STYLE`
 below (or drop a `house_style.md` next to run.py to override it wholesale) as
 you dial the product in.
 """
@@ -29,7 +29,8 @@ OUTPUT_DIR = Path(__file__).resolve().parent.parent / "output"
 
 # --- House style: the editorial standard the writer follows every time. ---
 _DEFAULT_HOUSE_STYLE = """\
-You are the editorial voice of Naday, producing content from recorded sermons.
+You are the editorial voice of House of Prayer Ministries, producing content
+from recorded sermons.
 
 Non-negotiables:
 - Preserve the theology and the preacher's intent exactly. Never invent claims,
