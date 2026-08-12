@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F5F1EA; --cream-2:#EFEAE0; --ink:#0A0A0A; --ink-soft:#1f1f1f;
+    --muted:#6b6862; --purple:#5B3FE6; --purple-soft:#7c66f0; --rule:rgba(10,10,10,.12);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:1920px;height:1080px;overflow:hidden}
+  body{
+    background:var(--cream);
+    font-family:'Instrument Sans',system-ui,sans-serif;
+    color:var(--ink); position:relative;
+  }
+
+  /* soft radial halo behind the orb (right side) */
+  .halo{
+    position:absolute; top:-12%; right:-8%; width:64%; height:96%;
+    background:radial-gradient(circle at center, rgba(91,63,230,.14), transparent 62%);
+    pointer-events:none;
+  }
+  /* subtle vignette to seat the composition */
+  .vignette{
+    position:absolute; inset:0;
+    background:radial-gradient(120% 120% at 30% 40%, transparent 55%, rgba(10,10,10,.05) 100%);
+  }
+
+  /* ---------- editorial frame ticks ---------- */
+  .frame{position:absolute; inset:56px; border:1px solid var(--rule); pointer-events:none}
+  .tick{position:absolute; font-family:'Anton',sans-serif; font-size:13px; letter-spacing:.22em;
+        text-transform:uppercase; color:var(--muted)}
+  .tick.tl{top:34px; left:34px}
+  .tick.tr{top:34px; right:34px; text-align:right}
+  .tick.bl{bottom:34px; left:34px}
+  .tick.br{bottom:34px; right:34px; text-align:right}
+  .tick .p{color:var(--purple)}
+
+  /* ---------- left text column ---------- */
+  .copy{position:absolute; left:140px; top:0; height:100%; width:760px;
+        display:flex; flex-direction:column; justify-content:center; z-index:5}
+  .kicker{display:inline-flex; align-items:center; gap:14px; font-size:15px; letter-spacing:.2em;
+          text-transform:uppercase; color:var(--muted); font-weight:500; margin-bottom:34px}
+  .kicker::before{content:""; width:38px; height:1px; background:var(--ink)}
+  h1{font-family:'Anton',sans-serif; font-weight:400; text-transform:uppercase;
+     font-size:150px; line-height:.86; letter-spacing:-.01em; margin-bottom:40px}
+  h1 .accent{
+    background:linear-gradient(92deg,#5B3FE6,#9a82f5,#5B3FE6);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .lede{font-size:24px; line-height:1.5; max-width:30ch; color:var(--ink-soft); margin-bottom:46px}
+  .cta{display:inline-flex; align-items:center; gap:14px; background:var(--ink); color:var(--cream);
+       padding:22px 34px; border-radius:999px; font-size:15px; letter-spacing:.14em;
+       text-transform:uppercase; font-weight:500; width:max-content}
+  .cta svg{width:16px; height:16px}
+
+  /* ---------- orb + constellation (right) ---------- */
+  .stage{position:absolute; right:150px; top:50%; transform:translateY(-50%);
+         width:760px; height:760px; z-index:3}
+  .ring{position:absolute; border-radius:50%; border:1px solid rgba(10,10,10,.14)}
+  .ring.r1{inset:0}
+  .ring.r2{inset:-46px; border-style:dashed; opacity:.5}
+  .ring.r3{inset:64px; border-color:rgba(91,63,230,.25)}
+  .orb{
+    position:absolute; inset:130px; border-radius:50%;
+    background:
+      radial-gradient(circle at 34% 28%, rgba(255,255,255,.95), transparent 42%),
+      radial-gradient(circle at 50% 56%, #8b76f2 0%, #5B3FE6 46%, #2c1c6a 100%);
+    box-shadow:
+      inset -34px -34px 90px rgba(20,10,60,.55),
+      inset 30px 30px 80px rgba(255,255,255,.18),
+      0 50px 120px rgba(91,63,230,.30);
+  }
+  .orb::after{content:""; position:absolute; left:20%; top:15%; width:30%; height:18%;
+    border-radius:50%; background:radial-gradient(ellipse at center, rgba(255,255,255,.95), transparent 70%);
+    filter:blur(5px)}
+
+  /* lineage nodes orbiting the orb — heritage / family / language / care */
+  .node{position:absolute; width:18px; height:18px; border-radius:50%;
+        background:var(--purple); box-shadow:0 0 0 6px var(--cream), 0 0 18px rgba(91,63,230,.5)}
+  .node.lab::after{content:attr(data-l); position:absolute; left:28px; top:-2px;
+        font-size:14px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); white-space:nowrap}
+  .n1{top:40px; left:50%}
+  .n2{top:50%; right:6px}
+  .n3{bottom:64px; left:18%}
+  .n4{top:30%; left:-6px}
+  svg.threads{position:absolute; inset:0; width:100%; height:100%; overflow:visible}
+  svg.threads line{stroke:rgba(10,10,10,.22); stroke-width:1}
+
+  /* grain */
+  .grain{position:absolute; inset:0; opacity:.05; mix-blend-mode:multiply; pointer-events:none}
+</style>
+</head>
+<body>
+  <div class="halo"></div>
+
+  <!-- right: orb + lineage constellation -->
+  <div class="stage">
+    <svg class="threads" viewBox="0 0 760 760">
+      <line x1="380" y1="380" x2="380" y2="40"/>
+      <line x1="380" y1="380" x2="754" y2="380"/>
+      <line x1="380" y1="380" x2="155" y2="696"/>
+      <line x1="380" y1="380" x2="-6" y2="228"/>
+    </svg>
+    <div class="ring r2"></div>
+    <div class="ring r1"></div>
+    <div class="ring r3"></div>
+    <div class="orb"></div>
+    <div class="node lab n1" data-l="Heritage"></div>
+    <div class="node lab n2" data-l="Care"></div>
+    <div class="node lab n3" data-l="Language"></div>
+    <div class="node lab n4" data-l="Learning"></div>
+  </div>
+
+  <!-- left: copy -->
+  <div class="copy">
+    <span class="kicker">A Naday Global Group company</span>
+    <h1>Creating<br/>the world<br/><span class="accent">you need.</span></h1>
+    <p class="lede">Software for the world worth living in — AI-embedded products for the things that hold lives together.</p>
+    <span class="cta">Work with us
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg>
+    </span>
+  </div>
+
+  <!-- editorial frame -->
+  <div class="frame"></div>
+  <div class="tick tl">Naday&nbsp;<span class="p">Tech</span></div>
+  <div class="tick tr">Est.&nbsp;<span class="p">2026</span></div>
+  <div class="tick bl">Heritage&nbsp;·&nbsp;Learning&nbsp;·&nbsp;Care</div>
+  <div class="tick br"><span class="p">[</span>&nbsp;Creating the world you need&nbsp;<span class="p">]</span></div>
+
+  <div class="vignette"></div>
+
+  <!-- fractal grain -->
+  <svg class="grain" xmlns="http://www.w3.org/2000/svg">
+    <filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"/></filter>
+    <rect width="100%" height="100%" filter="url(#n)"/>
+  </svg>
+</body>
+</html>
